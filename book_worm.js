@@ -34,6 +34,14 @@ BookWorm.prototype = {
 
   getLongestBook: function() {
     return _.maxBy(this.bookCollection, "pageCount");
+  },
+
+  sortByValue: function() {
+    return _.sortBy(this.bookCollection, "price");
+  },
+
+  compareToOther: function(bookWormTwo) {
+    return this.getCollectionTotal() - bookWormTwo.getCollectionTotal(); 
   }
 }
 

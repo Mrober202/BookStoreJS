@@ -55,7 +55,7 @@ describe("BookWorm", function() {
     bookWorm1.addBook(book2);
     bookWorm1.addBook(book3);
     bookWorm1.buyBook(book4);
-    assert.strictEqual(bookWorm1.getValueOfGenre("factual"), 2090.00);
+    assert.strictEqual(bookWorm1.getValueOfGenre("Factual"), 2090.00);
   })
 
   it("should be able to view their longest book", function() {
@@ -63,15 +63,23 @@ describe("BookWorm", function() {
     bookWorm1.addBook(book2);
     bookWorm1.addBook(book3);
     bookWorm1.buyBook(book4);
-    assert.strictEqual(bookWorm1.getLongestBook(), [book4]);
+    assert.deepEqual(bookWorm1.getLongestBook(), book4);
   })
 
-  xit("should be able to sort their books by value. (ascending or descending)", function() {
-
+  it("should be able to sort their books by value. (ascending or descending)", function() {
+    bookWorm1.addBook(book1);
+    bookWorm1.addBook(book2);
+    bookWorm1.addBook(book3);
+    bookWorm1.buyBook(book4);
+    assert.deepEqual(bookWorm1.sortByValue(), [book1, book3, book4, book2])
   })
 
-  xit("should be able to compare the value of their collection with another BookWorm", function() {
-
+  it("should be able to compare the value of their collection with another BookWorm", function() {
+    bookWorm1.addBook(book1);
+    bookWorm1.addBook(book2);
+    bookWorm2.addBook(book3);
+    bookWorm2.buyBook(book4);
+    assert.strictEqual(bookWorm1.compareToOther(bookWorm2), 1856);
   })
 
 })
